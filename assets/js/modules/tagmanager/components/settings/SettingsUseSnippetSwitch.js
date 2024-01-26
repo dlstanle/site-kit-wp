@@ -90,7 +90,7 @@ export default function SettingsUseSnippetSwitch() {
 		description = useSnippet ? (
 			<p>
 				{ __(
-					'Site Kit will add the code automatically. Yessir!!',
+					'Site Kit will add the code automatically.',
 					'google-site-kit'
 				) }
 			</p>
