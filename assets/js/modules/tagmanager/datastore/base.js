@@ -38,6 +38,7 @@ let baseModuleStore = Modules.createModuleStore( 'tagmanager', {
 		'containerID',
 		'internalContainerID',
 		'internalAMPContainerID',
+		'useFirstPartyServing',
 		'useSnippet',
 		'ownerID',
 		'gaPropertyID',
