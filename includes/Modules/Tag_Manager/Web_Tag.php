@@ -40,7 +40,7 @@ class Web_Tag extends Module_Web_Tag {
 	 *
 	 * @param string  $tag_id Tag ID.
 	 * @param boolean $use_fps Whether to use first party serving for this tag.
-	 * @param string $module_slug Module slug.
+	 * @param string  $module_slug Module slug.
 	 */
 	public function __construct( $tag_id, $use_fps, $module_slug ) {
 		parent::__construct( $tag_id, $module_slug );
@@ -90,7 +90,8 @@ class Web_Tag extends Module_Web_Tag {
 				f.parentNode.insertBefore( j, f );
 			} )( window, document, 'script', 'dataLayer', '%s' );
 			",
-			esc_js( $this->get_script_source(), $this->tag_id )
+			$this->get_script_source(),
+			esc_js( $this->tag_id )
 		);
 
 		$tag_manager_consent_attribute = $this->get_tag_blocked_on_consent_attribute_array();
