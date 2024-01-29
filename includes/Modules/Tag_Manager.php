@@ -558,7 +558,7 @@ final class Tag_Manager extends Module
 
 		$tag = $is_amp
 			? new AMP_Tag( $settings['ampContainerID'], self::MODULE_SLUG )
-			: new Web_Tag( $settings['containerID'], self::MODULE_SLUG );
+			: new Web_Tag( $settings['containerID'], $settings['useFirstPartyServing'], self::MODULE_SLUG );
 
 		if ( ! $tag->is_tag_blocked() ) {
 			$tag->use_guard( new Tag_Verify_Guard( $this->context->input() ) );

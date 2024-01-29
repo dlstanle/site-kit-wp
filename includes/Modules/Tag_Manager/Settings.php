@@ -80,6 +80,7 @@ class Settings extends Module_Settings implements Setting_With_Owned_Keys_Interf
 			'internalContainerID'    => '',
 			'internalAMPContainerID' => '',
 			'useSnippet'             => true,
+			'useFirstPartyServing'   => false,
 			'gaPropertyID'           => '',
 		);
 	}
@@ -96,6 +97,9 @@ class Settings extends Module_Settings implements Setting_With_Owned_Keys_Interf
 			if ( is_array( $option ) ) {
 				if ( isset( $option['useSnippet'] ) ) {
 					$option['useSnippet'] = (bool) $option['useSnippet'];
+				}
+				if ( isset( $option['useFirstPartyServing'] ) ) {
+					$option['useFirstPartyServing'] = (bool) $option['useFirstPartyServing'];
 				}
 			}
 			return $option;
