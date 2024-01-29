@@ -15,6 +15,8 @@ use Google\Site_Kit\Core\Util\Method_Proxy_Trait;
 use Google\Site_Kit\Core\Tags\Tag_With_DNS_Prefetch_Trait;
 use Google\Site_Kit\Core\Util\BC_Functions;
 
+define( 'FIRST_PARTY_SERVING_REDIRECT_URL', plugins_url( 'FirstPartyServing.php', dirname( __FILE__ ) ) );
+
 /**
  * Class for Web tag.
  *
@@ -25,6 +27,8 @@ use Google\Site_Kit\Core\Util\BC_Functions;
 class Web_Tag extends Module_Web_Tag {
 
 	use Method_Proxy_Trait, Tag_With_DNS_Prefetch_Trait;
+
+	const FPS_REDIRECT_URL = FIRST_PARTY_SERVING_REDIRECT_URL;
 
 	/**
 	 * Whether fps is enabled for this tag.
@@ -108,7 +112,7 @@ class Web_Tag extends Module_Web_Tag {
 	 */
 	private function get_script_source() {
 		$use_fps = $this->use_fps;
-		return $use_fps ? '/FirstPartyServing.php' : 'https://googletagmanager.com';
+		return $use_fps ? self::FPS_REDIRECT_URL : 'https://googletagmanager.com';
 	}
 
 	/**
