@@ -26,5 +26,6 @@ export { default as ContainerSelect } from './ContainerSelect';
 export { default as FormInstructions } from './FormInstructions';
 export { default as TagCheckProgress } from './TagCheckProgress';
 export { default as UseSnippetSwitch } from './UseSnippetSwitch';
+export { default as UseFirstPartyServingSwitch } from './UseFirstPartyServingSwitch';
 export { default as WebContainerNameTextField } from './WebContainerNameTextField';
 export { default as WebContainerSelect } from './WebContainerSelect';

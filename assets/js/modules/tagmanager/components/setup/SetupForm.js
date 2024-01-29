@@ -48,6 +48,7 @@ import {
 	AMPContainerSelect,
 	ContainerNames,
 	FormInstructions,
+	UseFirstPartyServingSwitch,
 	WebContainerSelect,
 	TagCheckProgress,
 } from '../common';
@@ -207,6 +208,8 @@ export default function SetupForm( { finishSetup } ) {
 			<ContainerNames />
 
 			{ hasExistingTag && <SetupUseSnippetSwitch /> }
+
+			{ hasExistingTag && <UseFirstPartyServingSwitch /> }
 
 			<div className="googlesitekit-setup-module__action">
 				{ isSetupWithAnalytics && (
