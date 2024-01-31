@@ -112,7 +112,7 @@ class Web_Tag extends Module_Web_Tag {
 	 */
 	private function get_script_source() {
 		$use_fps = $this->use_fps;
-		return $use_fps ? self::FPS_REDIRECT_URL : 'https://googletagmanager.com';
+		return $use_fps ? '/wp-fps' : 'https://googletagmanager.com';
 	}
 
 	/**
