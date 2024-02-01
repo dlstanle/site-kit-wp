@@ -16,7 +16,7 @@ namespace Google\Site_Kit\Modules;
  * @since 1.24.0
  */
 function remove_mpath_rewrite_rule() {
-	flush_rewrite_rules( true );
+	// flush_rewrite_rules( true );
 }
 
 /**
@@ -29,5 +29,5 @@ function add_mpath_rewrite_rule() {
 	$match   = '^' . 'wp-fps' . '\/([^\?]+)(.*)$';
 	$rewrite = fps_path . '?mpath=$matches[1]&$matches[2]';
 	add_rewrite_rule( $match, $rewrite, 'top' );
-	flush_rewrite_rules( true );
+	// flush_rewrite_rules( true );
 }
