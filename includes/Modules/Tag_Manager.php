@@ -48,8 +48,28 @@ use Google\Site_Kit\Modules\Tag_Manager\Web_Tag;
 use Google\Site_Kit_Dependencies\Google\Service\TagManager as Google_Service_TagManager;
 use Google\Site_Kit_Dependencies\Google\Service\TagManager\Container as Google_Service_TagManager_Container;
 use Google\Site_Kit_Dependencies\Psr\Http\Message\RequestInterface;
-use function Google\Site_Kit\Modules\FirstPartyServingSetup\add_mpath_rewrite_rule;
-use function Google\Site_Kit\Modules\FirstPartyServingSetup\remove_mpath_rewrite_rule;
+
+/**
+ * Removes the mpath rewrite rule and flushes.
+ *
+ * @since 1.24.0
+ */
+function remove_mpath_rewrite_rule() {
+	flush_rewrite_rules( true );
+}
+
+/**
+ * Adds new mpath rewrite rule and flushes.
+ *
+ * @since 1.24.0
+ */
+function add_mpath_rewrite_rule() {
+	$fps_path = plugins_url( 'FirstPartyServing.php', __FILE__ );
+	$match   = '^' . 'wp-fps' . '\/([^\?]+)(.*)$';
+	$rewrite = fps_path . '?mpath=$matches[1]&$matches[2]';
+	add_rewrite_rule( $match, $rewrite, 'top' );
+	flush_rewrite_rules( true );
+}
 
 /**
  * Class representing the Tag Manager module.
