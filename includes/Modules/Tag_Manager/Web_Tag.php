@@ -14,6 +14,7 @@ use Google\Site_Kit\Core\Modules\Tags\Module_Web_Tag;
 use Google\Site_Kit\Core\Util\Method_Proxy_Trait;
 use Google\Site_Kit\Core\Tags\Tag_With_DNS_Prefetch_Trait;
 use Google\Site_Kit\Core\Util\BC_Functions;
+use const Google\Site_kit\Modules\FIRST_PARTY_SERVING_MPATH;
 
 
 /**

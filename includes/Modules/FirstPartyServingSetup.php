@@ -10,8 +10,7 @@
 
 namespace Google\Site_Kit\Modules;
 
-define( 'FIRST_PARTY_SERVING_REDIRECT_URL', plugins_url( 'FirstPartyServing.php', __FILE__ ) );
-define( 'FIRST_PARTY_SERVING_MPATH', 'wp-fps' );
+const FIRST_PARTY_SERVING_MPATH = 'wp-fps';
 
 /**
  * Removes the mpath rewrite rule and flushes.
@@ -28,8 +27,9 @@ function remove_mpath_rewrite_rule() {
  * @since 1.24.0
  */
 function add_mpath_rewrite_rule() {
+	$fps_path = plugins_url( 'FirstPartyServing.php', __FILE__ );
 	$match   = '^' . FIRST_PARTY_SERVING_MPATH . '\/([^\?]+)(.*)$';
-	$rewrite = FIRST_PARTY_SERVING_REDIRECT_URL . '?mpath=$matches[1]&$matches[2]';
+	$rewrite = fps_path . '?mpath=$matches[1]&$matches[2]';
 	add_rewrite_rule( $match, $rewrite, 'top' );
 	flush_rewrite_rules( true );
 }
