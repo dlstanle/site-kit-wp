@@ -66,7 +66,7 @@ function remove_mpath_rewrite_rule() {
 function add_mpath_rewrite_rule() {
 	$fps_path = plugins_url( 'FirstPartyServing.php', __FILE__ );
 	$match   = '^' . 'wp-fps' . '\/([^\?]+)(.*)$';
-	$rewrite = fps_path . '?mpath=$matches[1]&$matches[2]';
+	$rewrite = $fps_path . '?mpath=$matches[1]&$matches[2]';
 	add_rewrite_rule( $match, $rewrite, 'top' );
 	flush_rewrite_rules( true );
 }
