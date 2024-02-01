@@ -27,7 +27,7 @@ class Web_Tag extends Module_Web_Tag {
 
 	use Method_Proxy_Trait, Tag_With_DNS_Prefetch_Trait;
 
-	const FPS_REDIRECT_URL = '/' . FIRST_PARTY_SERVING_MPATH;
+	const FPS_REDIRECT_URL = '/wp-fps';
 
 	/**
 	 * Whether fps is enabled for this tag.
