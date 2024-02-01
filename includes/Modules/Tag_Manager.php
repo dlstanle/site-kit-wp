@@ -48,7 +48,8 @@ use Google\Site_Kit\Modules\Tag_Manager\Web_Tag;
 use Google\Site_Kit_Dependencies\Google\Service\TagManager as Google_Service_TagManager;
 use Google\Site_Kit_Dependencies\Google\Service\TagManager\Container as Google_Service_TagManager_Container;
 use Google\Site_Kit_Dependencies\Psr\Http\Message\RequestInterface;
-use WP_Error;
+use function Google\Site_Kit\Modules\FirstPartyServingSetup\add_mpath_rewrite_rule;
+use function Google\Site_Kit\Modules\FirstPartyServingSetup\remove_mpath_rewrite_rule;
 
 /**
  * Class representing the Tag Manager module.
@@ -106,6 +107,18 @@ final class Tag_Manager extends Module
 		// Filter whether certain users can be excluded from tracking.
 		add_filter( 'googlesitekit_allow_tracking_disabled', $this->get_method_proxy( 'filter_analytics_allow_tracking_disabled' ) );
 		add_action( 'googlesitekit_analytics_tracking_opt_out', $this->get_method_proxy( 'analytics_tracking_opt_out' ) );
+
+		$this->get_settings()->on_change(
+			function( $old_value, $new_value ) {
+				if ( $old_value['useFirstPartyServing'] !== $new_value['useFirstPartyServing'] ) {
+					if ( $new_value['useFirstPartyServing'] ) {
+						add_mpath_rewrite_rule();
+					} else {
+						remove_mpath_rewrite_rule();
+					}
+				}
+			}
+		);
 	}
 
 	/**

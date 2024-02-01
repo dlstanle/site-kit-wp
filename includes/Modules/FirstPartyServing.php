@@ -8,13 +8,16 @@
  * @link      https://sitekit.withgoogle.com
  */
 
-
+/**
+ * Debug to console
+ */
 function debug_to_console( $data ) {
     $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
+    if ( is_array( $output ) )
+        $output = implode( ',', $output );
 
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
 
-debug_to_console("FpsTestFile Loaded");
+$id = 'G-UNSET';
+if ( isset( $_GET['id'] ) ) $id = $_GET['id'];
